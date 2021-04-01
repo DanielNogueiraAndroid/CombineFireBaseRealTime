@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplicationfirebase.R
 import com.example.myapplicationfirebase.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -25,6 +24,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -35,6 +35,10 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        _binding?.buttonHellow?.setOnClickListener{
+            homeViewModel.hello()
+        }
+
         return root
     }
 
